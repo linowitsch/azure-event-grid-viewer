@@ -1,11 +1,11 @@
 ﻿@{
-    ViewData["Title"] = "Custom LJA Azure Event Grid Viewer";
+    ViewData["Title"] = "LJA Azure Event Grid Viewer";
 }
 
 <div>
     <p style="float: left; font-size: 24px;" class="lead">
         <img src="~/images/eventgrid.png" height="47" width="90" alt="Azure Event Grid" />
-        <strong>Custom LJA Azure Event Grid Viewer</strong>
+        <strong>LJA Azure Event Grid Viewer</strong>
     </p>
     <p style="float: right;">
         <button class="btn btn-primary btn-xs" id="clear-events">
@@ -19,6 +19,7 @@
 <table id="grid-events" class="table table-striped">
     <thead>
     <th>&nbsp;</th>
+    <th>Event Time</th>
     <th>Event Type</th>
     <th>Subject</th>
     </thead>
@@ -32,6 +33,7 @@
                 <span class="glyphicon glyphicon-eye-open"></span>
             </button>
         </td>
+        <td>{{gridEvenTime}}</td>
         <td>{{gridEventType}}</td>
         <td>{{gridEventSubject}}</td>
     </tr>
@@ -63,6 +65,7 @@
         var addEvent = function (id, eventType, subject, eventTime, data) {
             var context = {
                 gridEventType: eventType,
+                gridEventTime: eventTime,
                 gridEventSubject: subject,
                 gridEventId: id,
                 gridEvent: data
